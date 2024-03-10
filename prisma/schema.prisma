@@ -12,3 +12,22 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @unique
+  email String  @unique
+  name  String?
+}
+
+model Admin {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  email String  @unique
+  password String 
+}
+
+model Club {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId 
+  name String  @unique
+}
+
