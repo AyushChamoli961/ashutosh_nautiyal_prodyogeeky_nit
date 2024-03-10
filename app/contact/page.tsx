@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 
@@ -31,12 +32,12 @@ const page = (props: Props) => {
           <div className="flex flex-wrap text-center justify-center">
             <div className="w-full lg:w-6/12 px-4">
               <h2 className="text-4xl font-semibold text-white">
-                Do you have something on your mind that you'd like to share with
+                Do you have something on your mind that you would like to share with
                 us?
               </h2>
               <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
                 Perhaps you have an idea or suggestion that could help us
-                improve our platform. We'd love to hear from you. Simply fill
+                improve our platform. We would love to hear from you. Simply fill
                 out our form and one of our team members will be in touch with
                 you soon. We value your input and look forward to hearing from
                 you.
@@ -130,13 +131,12 @@ const page = (props: Props) => {
                           </div>
 
                           <div className="mt-8">
-                            <button
-                              id="submitButton"
+                            <Button                              id="submitButton"
                               type="submit"
                               className="uppercase text-sm font-bold tracking-wide bg-gray-800 text-gray-100 p-3 rounded-full w-full focus:outline-none focus:shadow-outline"
                             >
                               Send message
-                            </button>
+                            </Button>
                           </div>
                         </form>
                       </div>

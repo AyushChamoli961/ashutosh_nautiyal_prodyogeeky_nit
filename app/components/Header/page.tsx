@@ -1,5 +1,7 @@
 import React from "react";
-import { UserButton } from "@clerk/nextjs";
+
+const UserButton = React.lazy(() => import("@clerk/nextjs").then(module => ({ default: module.UserButton })));
+
 type Props = {};
 
 const Header = (props: Props) => {

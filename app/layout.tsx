@@ -4,6 +4,8 @@ import Header from "./components/Header/page";
 import Footer from "./components/Footer/Footer";
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
+import  { Toaster } from 'react-hot-toast';
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +25,9 @@ export default function RootLayout({
             <Header />
                       {children}
                       <Footer />
+                      <Toaster/>
                       </body>
+                      
         </html>
     </ClerkProvider>
     
