@@ -27,7 +27,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
-          <img
+          <img  
             className="object-cover w-full h-full max-w-2xl rounded-md"
             src="/tech2.png"
             alt="apple watch photo"
@@ -46,11 +46,10 @@ export default function Home() {
               <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
                 Web Development Club
               </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl">
+              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
                 : Focuses on building websites, including frontend and backend
-                development, web design principles, and web technologies like
-                HTML, CSS, JavaScript, and frameworks like React, Angular, or
-                Vue.js.
+                development and web technologies like HTML, CSS, JavaScript, and
+                frameworks like React, Angular.
               </h1>
 
               <div className="mt-4">
@@ -73,7 +72,7 @@ export default function Home() {
               <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
                 Mobile App Development Club
               </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl">
+              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
                 Concentrates on creating mobile applications for iOS, Android,
                 or cross-platform using technologies such as Swift, Kotlin,
                 Java, Flutter, or React Native.
@@ -99,7 +98,7 @@ export default function Home() {
               <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
                 UI/UX Design Club:
               </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl">
+              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
                 Explores user interface (UI) and user experience (UX) design
                 principles, tools like Adobe XD, Figma, or Sketch, and conducts
                 workshops on wireframing, prototyping, and usability testing.
