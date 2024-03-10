@@ -6,28 +6,15 @@ import { NextResponse } from "next/server"
 
 export  async function POST(req: Request) {
 
-    const { name, date, location, clubId }  = await req.json();
+    const { name, date, location, club, description }  = await req.json();
 
 
-    // const user = await currentProfile();
-
-    // if(!user){
-    //     return redirectToSignIn()
-    // }
 
     try{
-        if(!name ){
-            return new NextResponse("Name is required", {status: 400});
-        }
-        if(!date ){
-            return new NextResponse("date is required", {status: 400});
-        }
-        if(!location ){
-            return new NextResponse("location is required", {status: 400});
-        }
-        if(!clubId ){
-            return new NextResponse("Please select the club", {status: 400});
-        }
+
+        console.log(name, date, location, club, description)
+
+
 
         const event = await db.event.create({
 
@@ -35,7 +22,8 @@ export  async function POST(req: Request) {
                 name,
                 date,
                 location,
-                clubId
+                clubId: club,
+                description
             }
         });
 
@@ -43,7 +31,7 @@ export  async function POST(req: Request) {
 
     }
     catch(e){
-        console.error(e);
+        console.log(e);
         NextResponse.json({error: 'Something went wrong'});
     }
 

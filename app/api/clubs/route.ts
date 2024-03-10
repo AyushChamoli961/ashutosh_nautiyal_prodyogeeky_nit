@@ -30,7 +30,7 @@ export  async function POST(req: Request) {
 
     }
     catch(e){
-        console.error(e);
+        console.log(e);
         NextResponse.json({error: 'Something went wrong'});
     }
 

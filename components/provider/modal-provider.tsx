@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { CreateClubModal } from "../modals/create-club";
+import { CreateEvent } from "../modals/create-event";
 
 export const ModalProvider = () => {
     const [isMounted,  setIsMounted] = useState(false);
@@ -16,6 +17,7 @@ export const ModalProvider = () => {
     return(
         <>
             <CreateClubModal/>
+            <CreateEvent/>
         </>
     )
 }
