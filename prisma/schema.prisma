@@ -7,15 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model User {
   id       String          @id @default(auto()) @map("_id") @db.ObjectId
   userId   String          @unique
   email    String          @unique
   name     String
   clubName String?
-  role     String @default( "Member") 
+  role     String          @default("Member")
   clubs    UserWithClubs[]
 }
 
@@ -23,7 +21,8 @@ model Club {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
   name          String          @unique
   description   String
-  events        Event[]         // Define a relation to the Event model
+  image         String?
+  events        Event[] // Define a relation to the Event model
   president     String?
   vicePresident String?
   secretary     String?
@@ -47,14 +46,12 @@ model Admin {
   password String
 }
 
-
 model Event {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String
-  date          String
-  location      String
-  club          Club            @relation(fields: [clubId], references: [id])
-  clubId        String          @db.ObjectId // This field establishes the relationship with the Club model
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  date        String
+  location    String
+  club        Club    @relation(fields: [clubId], references: [id])
+  clubId      String  @db.ObjectId // This field establishes the relationship with the Club model
   description String?
 }
-

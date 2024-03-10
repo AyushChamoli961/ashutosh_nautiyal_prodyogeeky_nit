@@ -1,66 +1,47 @@
-'use client'
+"use client";
 import axios from "axios";
-import { Button
- } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { register } from "module";
 import toast from "react-hot-toast";
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const { t } = useTranslation("common");
 
-    const { t } = useTranslation('common');
+  const [clubs, setClubs] = useState([]);
 
-    const webRegister = async() => {
-        try{const club = await axios.post('/api/clubs', {
-            name: 'web'
-
-        })
-        toast.success('Registered successfully in web club!')
-        ;}
-
-        catch(error){
-            console.log(error)
-        }
-
-
-
-
+  useEffect(() => {
+    async function fetchClubs() {
+      try {
+        const response = await axios.get("/api/clubs");
+        setClubs(response.data);
+      } catch (error) {
+        console.error("Error fetching clubs:", error);
+      }
     }
-     const mobRegister = async() => {
-        try{
-            const club = await axios.post('/api/clubs', {
-            name: 'mob'
-            
-        })
-        toast.success('Registered successfully in mobile club!')
 
-        return club;
-        }
+    fetchClubs();
+  }, []);
 
-        catch(error){
-            console.log(error)
-        }
+  console.log("the clubs are ", clubs);
 
+  const [events, setEvents] = useState([]);
 
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const response = await axios.get("/api/events");
+        setEvents(response.data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
     }
-    const uiRegister = async() => {
-        try{
-            const club = await axios.post('/api/clubs', {
-            name: 'ui'
-            
-        })
 
-        toast.success('Registered successfully in UI/UX club!')
+    fetchEvents();
+  }, []);
 
-        return club;
-        }
-
-        catch(error){
-            console.log(error)
-        }
-
-
-    }
+  console.log("the events are ", events);
 
   return (
     <div>
@@ -88,79 +69,68 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
-          <img  
+          <img
             className="object-cover w-full h-full max-w-2xl rounded-md"
             src="/tech2.png"
             alt="apple watch photo"
           />
         </div>
       </div>
+
       <section>
+        <h1 className="font-extrabold text-gray-700 md:text-3xl text-center lg:text-6xl pt-16 ">
+          Explore the Clubs Now !
+        </h1>
         <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
           <div className="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
-            <div className="p-6">
-              <img
-                className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
-                src="/web.webp"
-                alt="blog"
-              />
-              <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
-                Web Development Club
-              </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
-                : Focuses on building websites, including frontend and backend
-                development and web technologies like HTML, CSS, JavaScript, and
-                frameworks like React, Angular.
-              </h1>
+            {clubs.map((club) => (
+              <div className="p-6">
+                <img
+                  className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
+                  src={club?.image || "/web.webp"}
+                  alt="blog"
+                />
+                <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
+                  {club.name}
+                </h2>
+                <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
+                  {club.description.substr(0, 100)}...
+                </h1>
 
-              <div className="mt-4">
-                <Button  onClick={webRegister}>
-                        Register
-                </Button>
+                <div className="mt-4">
+                  <Button>Register</Button>
+                </div>
               </div>
-            </div>
-            <div className="p-6">
-              <img
-                className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
-                src="/mobile.jpg"
-                alt="blog"
-              />
-              <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
-                Mobile App Development Club
-              </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
-                Concentrates on creating mobile applications for iOS, Android,
-                or cross-platform using technologies such as Swift, Kotlin,
-                Java, Flutter, or React Native.
-              </h1>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-4">
-                 <Button  onClick={mobRegister}>
-                        Register
-                </Button>
-              </div>
-            </div>
-            <div className="p-6">
-              <img
-                className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
-                src="/ui.jpg"
-                alt="blog"
-              />
-              <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
-                UI/UX Design Club:
-              </h2>
-              <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
-                Explores user interface (UI) and user experience (UX) design
-                principles, tools like Adobe XD, Figma, or Sketch, and conducts
-                workshops on wireframing, prototyping, and usability testing.
-              </h1>
+      <section>
+        <h1 className="font-extrabold text-gray-700 md:text-3xl text-center lg:text-6xl pt-16 ">
+          Explore the Events Now !
+        </h1>
+        <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+          <div className="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
+            {events.map((club) => (
+              <div className="p-6">
+                <img
+                  className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
+                  src="/mobile.jpg"
+                  alt="blog"
+                />
+                <h2 className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase">
+                  {club.name}
+                </h2>
+                <h1 className="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-2xl ">
+                  {club.description.substr(0, 100)}...
+                </h1>
 
-              <div className="mt-4">
-                 <Button  onClick={uiRegister}>
-                        Register
-                </Button>
+                <div className="mt-4">
+                  <Button>Read More</Button>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

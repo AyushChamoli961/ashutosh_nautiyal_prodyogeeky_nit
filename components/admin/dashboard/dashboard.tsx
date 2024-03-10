@@ -96,7 +96,7 @@ export const DashboardPage =  async() => {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-4xl font-bold">{mobiledev}</div>
+                      <div className="text-4xl font-bold">0</div>
                       <p className="text-xs text-muted-foreground">
                         users registered
                       </p>
@@ -126,7 +126,7 @@ export const DashboardPage =  async() => {
                     </CardHeader>
                     <CardContent>
                       <div className="text-4xl font-bold">
-                        {uiux}
+                        1
                       </div>
             
                     </CardContent>
@@ -152,7 +152,7 @@ export const DashboardPage =  async() => {
                     </CardHeader>
                     <CardContent>
                       <div className="text-4xl font-bold">
-                        {uiux}
+                        1
                       </div>
                     </CardContent>
                   </Card>

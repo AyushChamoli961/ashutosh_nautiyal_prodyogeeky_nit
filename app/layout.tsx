@@ -6,6 +6,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import  { Toaster } from 'react-hot-toast';
 import { ModalProvider } from "@/components/provider/modal-provider";
+import Bot from "./components/Bot/Bot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
                       {children}
                       <Footer />
                       <Toaster/>
+                      <Bot />s
                       </body>
                       
         </html>
