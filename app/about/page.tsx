@@ -93,9 +93,7 @@ const page = (props: Props) => {
                       <p className="mt-2 mb-4 text-gray-600">
                         Whether you're a seasoned developer or just starting
                         your journey in the tech world, there's something for
-                        everyone at [College Name] Tech Clubs.Create a community
-                        of transparency and honesty that fosters meaningful and
-                        constructive feedback, enhancing the college experience
+                        everyone at [College Name] Tech Clubs.
                       </p>
                     </div>
                   </div>
@@ -111,7 +109,8 @@ const page = (props: Props) => {
                       <p className="mt-2 mb-4 text-gray-600">
                         We are committed to transparency and honesty, creating a
                         safe space for students to share their experiences and
-                        insights.
+                        insights. Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Deleniti incidunt ration.
                       </p>
                     </div>
                   </div>
@@ -120,21 +119,21 @@ const page = (props: Props) => {
 
               <div className="flex flex-wrap items-center mt-32">
                 <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                  <h3 className="text-3xl mb-2 font-semibold leading-normal">
+                  <h3 className="text-3xl  text-gray-700 mb-2 font-semibold leading-normal">
                     Who are we ?
                   </h3>
-                  <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                    With a passion for innovation and a drive to enhance the
-                    college experience, we, a group of diligent college
-                    undergraduates, have embarked on a journey to create a
-                    unique platform.
-                  </p>
+
                   <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                    Our aim is to provide a comprehensive and transparent
-                    platform for college students to rate and review every
-                    aspect of their college life, ranging from the academic
-                    departments and library facilities to sports facilities,
-                    college infrastructure, and beyond.
+                    Our dedicated team of volunteers, comprised of students from
+                    different majors and backgrounds, work tirelessly to
+                    organize engaging events and provide resources to support
+                    your learning and growth. We believe in the power of
+                    community and strive to create an inclusive environment
+                    where everyone feels welcome to explore and innovate. Join
+                    us on this exciting journey as we explore the latest trends
+                    in technology, collaborate on projects, and connect with
+                    like-minded individuals. Together, let's make a difference
+                    and shape the future of technology!
                   </p>
                 </div>
 
