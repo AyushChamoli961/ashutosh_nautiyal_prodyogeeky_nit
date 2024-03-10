@@ -23,6 +23,8 @@ import { Search } from "@/components/admin/dashboard/search";
 import { UserNav } from "@/components/admin/dashboard/user-nav";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { db } from "@/lib/db";
+
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -34,6 +36,28 @@ export const DashboardPage = async () => {
   // const TotalSales = await revenue();
   // const LeadsLastMonth = await getLastMonthLeads();
   // const graphRevenue = await getGraphRevenue();
+
+  const totalUser = await db.user.count();
+
+  const webdev = await db.user.count({
+    where:{
+      clubName : "Web Development"
+    }
+  });
+
+  const mobiledev = await db.user.count({
+    where:{
+      clubName : "Mobile Development"
+    }
+  });
+
+  const uiux = await db.user.count({
+      where:{
+        clubName : "UI/UX"
+      }
+  });
+
+  const users = await db.user.findMany()
 
   return (
     <>
@@ -56,7 +80,7 @@ export const DashboardPage = async () => {
                   <Card  className="hover:bg-slate-100 cursor-pointer">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
-                        Total Revenue
+                        Mobile development club
                       </CardTitle>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -72,10 +96,10 @@ export const DashboardPage = async () => {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-4xl font-bold">₹{1000}</div>
-                      {/* <p className="text-xs text-muted-foreground">
-                        +20.1% from last month
-                      </p> */}
+                      <div className="text-4xl font-bold">99</div>
+                      <p className="text-xs text-muted-foreground">
+                        users registered
+                      </p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -83,7 +107,7 @@ export const DashboardPage = async () => {
                   <Card   className="hover:bg-slate-100 cursor-pointer">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
-                        Appoinments
+                        UI/UX Club Members
                       </CardTitle>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -104,16 +128,14 @@ export const DashboardPage = async () => {
                       <div className="text-4xl font-bold">
                         20
                       </div>
-                      <p className="text-xs text-muted-foreground">
-                        booked this week
-                      </p>
+            
                     </CardContent>
                   </Card>
                 </Link>
                 <Link href="/admin/patients">
                   <Card className="hover:bg-slate-100 cursor-pointer">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                      <CardTitle className="text-sm font-medium">Leads</CardTitle>
+                      <CardTitle className="text-sm font-medium">Web Development</CardTitle>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -129,9 +151,9 @@ export const DashboardPage = async () => {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-4xl font-bold">+100</div>
+                      <div className="text-4xl font-bold">{}</div>
                       <p className="text-xs text-muted-foreground">
-                        in past 30 days
+                        
                       </p>
                     </CardContent>
                   </Card>
@@ -150,10 +172,30 @@ export const DashboardPage = async () => {
                 <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle className="text-[#1ecf36]  text-3xl">
-                      Todays Appiontments
+                      Total Registrations
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
+                    <div className="flex items-center  ml-4">
+                       <div className="text-1xl font-bold">Name</div>
+                      <div className="text-1xl font-bold ml-auto">Email</div>
+                    </div>
+                   
+
+                    {
+                      users.map((user) => (
+                        <div className="flex items-center" key={user.id}>
+                          <div className="ml-4 space-y-1">
+                            <p className="text-sm font-medium leading-none">
+                              {user.name}
+                            </p>
+                          </div>
+                          <div className="ml-auto font-medium">{user.clubName}</div>
+                          <div className="ml-auto font-medium">{user.email}</div>
+                        </div>
+                      ))
+
+                    }
                   </CardContent>
                 </Card>
               </div>

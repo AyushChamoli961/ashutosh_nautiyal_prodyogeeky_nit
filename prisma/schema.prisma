@@ -18,6 +18,9 @@ model User {
   userId String @unique
   email String  @unique
   name  String?
+  clubName String? 
+
+  
 }
 
 model Admin {
@@ -29,5 +32,6 @@ model Admin {
 model Club {
   id    String  @id @default(auto()) @map("_id") @db.ObjectId 
   name String  @unique
+
 }
 
