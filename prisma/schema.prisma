@@ -7,17 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum clubs {
-  web
-  mob
-  ui
-}
+
+
 model User {
   id       String          @id @default(auto()) @map("_id") @db.ObjectId
   userId   String          @unique
   email    String          @unique
-  name     String?
+  name     String
   clubName String?
+  role     String @default( "Member") 
   clubs    UserWithClubs[]
 }
 
@@ -59,3 +57,4 @@ model Event {
   clubId        String          @db.ObjectId // This field establishes the relationship with the Club model
   description String?
 }
+

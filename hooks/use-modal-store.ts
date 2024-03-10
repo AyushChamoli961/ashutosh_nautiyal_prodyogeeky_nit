@@ -3,8 +3,8 @@ import {create} from "zustand"
 import { RowModel } from "@tanstack/react-table";
 import { Club , User} from "@prisma/client";
 
-
-export type ModalType = "createClub" | "createEvent" 
+ 
+export type ModalType = "createClub" | "createEvent" | "changeRole"
 
 interface ModalData{
     club? : Club[]
