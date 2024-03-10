@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 import Navbar from "./navabar";
 
-export const DashboardPage = async () => {
+export const DashboardPage =  async() => {
   // const TotalAppointments = await getAppoinments();
   // const TotalSales = await revenue();
   // const LeadsLastMonth = await getLastMonthLeads();
