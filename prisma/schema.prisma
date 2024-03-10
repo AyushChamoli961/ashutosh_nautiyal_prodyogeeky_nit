@@ -13,30 +13,12 @@ enum clubs {
   ui
 }
 model User {
-<<<<<<< HEAD
   id       String          @id @default(auto()) @map("_id") @db.ObjectId
   userId   String          @unique
   email    String          @unique
   name     String?
   clubName String?
   clubs    UserWithClubs[]
-=======
-  id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId String  @unique
-  email  String  @unique
-  name   String?
-  clubName String?
-  clubs  UserWithClubs[]
-}
-
-model Event {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String
-  date          DateTime
-  location      String
-  club          Club            @relation(fields: [clubId], references: [id])
-  clubId        String          @db.ObjectId // This field establishes the relationship with the Club model
->>>>>>> 641dd606554b0d40b07c88cc9d3eebad4327a497
 }
 
 model Club {
@@ -51,7 +33,6 @@ model Club {
 }
 
 model UserWithClubs {
-<<<<<<< HEAD
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   user User? @relation(fields: [userId], references: [userId])
@@ -77,21 +58,4 @@ model Event {
   club          Club            @relation(fields: [clubId], references: [id])
   clubId        String          @db.ObjectId // This field establishes the relationship with the Club model
   description String?
-=======
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-
-  user     User?    @relation(fields: [userId], references: [userId])
-
-  club     Club?     @relation(fields: [clubId], references: [id])
-  userId   String   @unique
-  clubId   String   @db.ObjectId 
-  createdAt DateTime @default(now())
-}
-
-
-model Admin {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  email    String  @unique
-  password String 
->>>>>>> 641dd606554b0d40b07c88cc9d3eebad4327a497
 }
