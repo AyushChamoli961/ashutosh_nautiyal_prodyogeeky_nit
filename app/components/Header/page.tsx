@@ -1,5 +1,5 @@
 import React from "react";
-
+import { UserButton } from "@clerk/nextjs";
 type Props = {};
 
 const Header = (props: Props) => {
@@ -27,6 +27,9 @@ const Header = (props: Props) => {
             >
               contact
             </a>
+
+            <div className="ml-auto"><UserButton/></div>
+
           </div>
         </div>
       </nav>
