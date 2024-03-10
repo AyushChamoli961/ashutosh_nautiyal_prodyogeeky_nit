@@ -18,25 +18,51 @@ enum clubs {
   mob
   ui
 }
+// Define the User model
 model User {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @unique
-  email String  @unique
-  name  String?
-  clubName clubs?
-
-  
+  id       String          @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String          @unique
+  email    String          @unique
+  name     String?
+  clubName String?
+  clubs    UserWithClubs[]
 }
+
+// Define the Club model
+model Club {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String          @unique
+  description   String
+  events        Event[]         // Define a relation to the Event model
+  president     String?
+  vicePresident String?
+  secretary     String?
+  members       UserWithClubs[]
+}
+
+// Define the Event model
+model Event {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  date          DateTime
+  location      String
+  club          Club            @relation(fields: [clubId], references: [id])
+  clubId        String          @db.ObjectId // This field establishes the relationship with the Club model
+}
+
+// Define the UserWithClubs model
+model UserWithClubs {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  user      User?     @relation(fields: [userId], references: [userId])
+  club      Club?     @relation(fields: [clubId], references: [id])
+  userId    String    @unique
+  clubId    String    @db.ObjectId
+  createdAt DateTime  @default(now())
+}
+
 
 model Admin {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  email String  @unique
-  password String 
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String
 }
-
-model Club {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId 
-  name String  @unique
-
-}
-
