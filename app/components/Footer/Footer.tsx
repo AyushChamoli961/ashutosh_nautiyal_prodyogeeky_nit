@@ -132,7 +132,7 @@ const Footer: React.FC = () => (
             <Link href="/">
               <Image
                 alt="logo"
-                src={"/assets/images/logo2.png"}
+                src=""
                 height={300}
                 width={300}
               />

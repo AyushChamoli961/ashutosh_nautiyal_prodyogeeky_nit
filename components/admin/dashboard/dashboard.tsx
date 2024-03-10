@@ -17,7 +17,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 // import { getLastMonthLeads } from "@/actions/get-leads";
 // import { getGraphRevenue } from "@/actions/get-graph-revenue";
 
-import { UserNav } from "@/components/admin/dashboard/user-nav";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { db } from "@/lib/db";
