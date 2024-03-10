@@ -20,12 +20,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { useModal } from "@/hooks/use-modal-store";
 
 
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
 };
+
+import Navbar from "./navabar";
 
 export const DashboardPage = async () => {
   // const TotalAppointments = await getAppoinments();
@@ -55,6 +58,8 @@ export const DashboardPage = async () => {
 
   const users = await db.user.findMany()
 
+  
+
   return (
     <>
       <div className=" flex-col md:flex">
@@ -62,7 +67,9 @@ export const DashboardPage = async () => {
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <Navbar/>
           </div>
+         
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               

@@ -5,27 +5,24 @@ import { redirect } from "next/dist/server/api-utils";
 import { NextResponse } from "next/server"
 export  async function POST(req: Request) {
 
-    const { name }  = await req.json();
+    const { name , description}  = await req.json();
 
-    console.log("hellop", name)
+    // const user = await currentProfile();
 
-    const user = await currentProfile();
-
-    if(!user){
-        return redirectToSignIn()
-    }
+    // if(!user){
+    //     return redirectToSignIn()
+    // }
 
     try{
         if(!name ){
             return new NextResponse("Name is required", {status: 400});
         }
 
-        const club = await db.user.update({
-            where: {
-                userId: user.userId
-            },
-            data:{
-                clubName: name,
+        const club = await db.club.create({
+            data: {
+                name,
+                description,
+            
             }
         });
 
@@ -39,3 +36,10 @@ export  async function POST(req: Request) {
 
 
 }
+
+export async function GET(req: Request) {
+    const clubs = await db.club.findMany();
+    return NextResponse.json(clubs);
+}
+
+

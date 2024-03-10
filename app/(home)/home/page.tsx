@@ -5,7 +5,11 @@ import { Button
  } from "@/components/ui/button";
 import { register } from "module";
 import toast from "react-hot-toast";
+import { useTranslation } from 'next-i18next';
+
 export default function Home() {
+
+    const { t } = useTranslation('common');
 
     const webRegister = async() => {
         try{const club = await axios.post('/api/clubs', {
@@ -65,7 +69,7 @@ export default function Home() {
         <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
           <div className="max-w-lg lg:mx-12 lg:order-2">
             <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">
-              Technical Club Nit Uk
+              {t("Technical Club Nit Uk")}
             </h1>
             <p className="mt-4 text-gray-600 dark:text-gray-300">
               Welcome to [College Name] Tech Clubs! We are a vibrant community

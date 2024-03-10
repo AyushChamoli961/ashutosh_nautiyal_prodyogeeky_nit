@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import  { Toaster } from 'react-hot-toast';
+import { ModalProvider } from "@/components/provider/modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
+      <ModalProvider/>
         <html lang="en">
           <body className={inter.className}>
             <Header />
