@@ -91,8 +91,8 @@ const page = (props: Props) => {
                       </div>
                       <h6 className="text-xl font-semibold">Our Mission</h6>
                       <p className="mt-2 mb-4 text-gray-600">
-                        Whether you're a seasoned developer or just starting
-                        your journey in the tech world, there's something for
+                        Whether youre a seasoned developer or just starting
+                        your journey in the tech world, theres something for
                         everyone at [College Name] Tech Clubs.
                       </p>
                     </div>
@@ -132,7 +132,7 @@ const page = (props: Props) => {
                     where everyone feels welcome to explore and innovate. Join
                     us on this exciting journey as we explore the latest trends
                     in technology, collaborate on projects, and connect with
-                    like-minded individuals. Together, let's make a difference
+                    like-minded individuals. Together, lets make a difference
                     and shape the future of technology!
                   </p>
                 </div>

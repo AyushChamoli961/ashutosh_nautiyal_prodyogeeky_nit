@@ -13,12 +13,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum clubs {
+  web
+  mob
+  ui
+}
 model User {
   id    String  @id @default(auto()) @map("_id") @db.ObjectId
   userId String @unique
   email String  @unique
   name  String?
-  clubName String? 
+  clubName clubs?
 
   
 }

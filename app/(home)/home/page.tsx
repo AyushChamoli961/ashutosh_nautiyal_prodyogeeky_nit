@@ -1,6 +1,64 @@
+'use client'
 import Image from "next/image";
-
+import axios from "axios";
+import { Button
+ } from "@/components/ui/button";
+import { register } from "module";
+import toast from "react-hot-toast";
 export default function Home() {
+
+    const webRegister = async() => {
+        try{const club = await axios.post('/api/clubs', {
+            name: 'web'
+
+        })
+        toast.success('Registered successfully in web club!')
+        ;}
+
+        catch(error){
+            console.log(error)
+        }
+
+
+
+
+    }
+     const mobRegister = async() => {
+        try{
+            const club = await axios.post('/api/clubs', {
+            name: 'mob'
+            
+        })
+        toast.success('Registered successfully in mobile club!')
+
+        return club;
+        }
+
+        catch(error){
+            console.log(error)
+        }
+
+
+    }
+    const uiRegister = async() => {
+        try{
+            const club = await axios.post('/api/clubs', {
+            name: 'ui'
+            
+        })
+
+        toast.success('Registered successfully in UI/UX club!')
+
+        return club;
+        }
+
+        catch(error){
+            console.log(error)
+        }
+
+
+    }
+
   return (
     <div>
       <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
@@ -53,14 +111,9 @@ export default function Home() {
               </h1>
 
               <div className="mt-4">
-                <a
-                  href="#"
-                  className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
-                  title="read more"
-                >
-                  {" "}
-                  Read More »{" "}
-                </a>
+                <Button  onClick={webRegister}>
+                        Register
+                </Button>
               </div>
             </div>
             <div className="p-6">
@@ -79,14 +132,9 @@ export default function Home() {
               </h1>
 
               <div className="mt-4">
-                <a
-                  href="#"
-                  className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
-                  title="read more"
-                >
-                  {" "}
-                  Read More »{" "}
-                </a>
+                 <Button  onClick={mobRegister}>
+                        Register
+                </Button>
               </div>
             </div>
             <div className="p-6">
@@ -105,14 +153,9 @@ export default function Home() {
               </h1>
 
               <div className="mt-4">
-                <a
-                  href="#"
-                  className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
-                  title="read more"
-                >
-                  {" "}
-                  Read More »{" "}
-                </a>
+                 <Button  onClick={uiRegister}>
+                        Register
+                </Button>
               </div>
             </div>
           </div>

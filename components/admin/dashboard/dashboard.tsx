@@ -10,17 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDateRangePicker } from "@/components/admin/dashboard/date-range-picket";
-import { MainNav } from "@/components/admin/dashboard/main-nav";
-import { Overview } from "@/components/admin/dashboard/overview";
-import { Search } from "@/components/admin/dashboard/search";
+
 
 // import { getAppoinments } from "@/actions/get-appoinments";
 // import { revenue } from "@/actions/get-sales";
 // import { getLastMonthLeads } from "@/actions/get-leads";
 // import { getGraphRevenue } from "@/actions/get-graph-revenue";
 
-import { UserNav } from "@/components/admin/dashboard/user-nav";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { db } from "@/lib/db";
@@ -41,19 +37,19 @@ export const DashboardPage = async () => {
 
   const webdev = await db.user.count({
     where:{
-      clubName : "Web Development"
+      clubName : "web"
     }
   });
 
   const mobiledev = await db.user.count({
     where:{
-      clubName : "Mobile Development"
+      clubName : "mob"
     }
   });
 
   const uiux = await db.user.count({
       where:{
-        clubName : "UI/UX"
+        clubName : "ui"
       }
   });
 
@@ -69,10 +65,7 @@ export const DashboardPage = async () => {
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" disabled>
-                Analytics
-              </TabsTrigger>
+              
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -96,7 +89,7 @@ export const DashboardPage = async () => {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-4xl font-bold">99</div>
+                      <div className="text-4xl font-bold">{mobiledev}</div>
                       <p className="text-xs text-muted-foreground">
                         users registered
                       </p>
@@ -126,7 +119,7 @@ export const DashboardPage = async () => {
                     </CardHeader>
                     <CardContent>
                       <div className="text-4xl font-bold">
-                        20
+                        {uiux}
                       </div>
             
                     </CardContent>
@@ -151,10 +144,9 @@ export const DashboardPage = async () => {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-4xl font-bold">{}</div>
-                      <p className="text-xs text-muted-foreground">
-                        
-                      </p>
+                      <div className="text-4xl font-bold">
+                        {uiux}
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>
