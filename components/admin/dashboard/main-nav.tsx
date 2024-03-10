@@ -1,4 +1,3 @@
-"use client";
 
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
@@ -18,7 +17,7 @@ export function MainNav({
       label: "Overview",
       active: pathname === `/admin`,
     },
-    
+
   ];
 
   return (

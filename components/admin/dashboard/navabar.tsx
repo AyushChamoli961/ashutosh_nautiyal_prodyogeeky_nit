@@ -1,5 +1,4 @@
 'use client'
-
 import { MainNav } from "@/components/admin/dashboard/main-nav";
 import ThemeChanger from "@/components/Navbar/DarkSwitch";
 import { db } from "@/lib/db";
@@ -18,7 +17,7 @@ const Navbar =  () => {
           <Button onClick={() => onOpen("createClub")}>
               Add Club
             </Button>
-            <Button>
+            <Button onClick={() => onOpen("createEvent")}>
               Add Events
             </Button>
           <ThemeChanger/>
